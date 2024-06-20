@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:period_pal/config/router/route.dart';
 import 'package:period_pal/core/contants/app_colors.dart';
 import 'package:period_pal/widgets/button_widget.dart';
@@ -7,8 +6,8 @@ import 'package:period_pal/widgets/horizontal_divider.dart';
 import 'package:period_pal/widgets/icon_button_widget.dart';
 import 'package:period_pal/widgets/input_widget.dart';
 
-class SignupScreen extends StatelessWidget {
-  SignupScreen({super.key});
+class SignInScreen extends StatelessWidget {
+  SignInScreen({super.key});
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -20,7 +19,7 @@ class SignupScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text(
-          'Create An Account',
+          'Log In',
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w700,
@@ -35,7 +34,7 @@ class SignupScreen extends StatelessWidget {
             child: Column(
               children: [
                 const Text(
-                  'Welcome To your Period Pal!',
+                  'Welcome Back!',
                   style: TextStyle(
                     fontStyle: FontStyle.italic,
                     fontSize: 18,
@@ -43,7 +42,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
                 const Text(
-                  'Sign Up to get started.',
+                  'Login to your Period Pal',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w400,
@@ -62,59 +61,25 @@ class SignupScreen extends StatelessWidget {
                   hintText: 'Password',
                 ),
                 const SizedBox(height: 6),
-                CheckboxListTile(
-                  value: false,
-                  onChanged: (val) {},
-                  controlAffinity: ListTileControlAffinity.leading,
-                  contentPadding: const EdgeInsets.all(0),
-                  title: Transform.translate(
-                    offset: const Offset(-10, 0),
-                    child: RichText(
-                      text: const TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'I agree to Period Pal ',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.black,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'Privacy Policy ',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.purple,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'and ',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.black,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'Terms of use',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.purple,
-                            ),
-                          ),
-                        ],
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Forgot Password?',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.black,
                       ),
                     ),
-                  ),
+                  ],
                 ),
                 const SizedBox(height: 24),
                 ButtonWidget(
-                  label: 'Get Started',
+                  label: 'Log In',
                   backgroundColor: AppColors.purple,
                   onPressed: () {
-                    Navigator.pushNamed(context, Routes.profileActivation);
+                    Navigator.pushNamed(context, Routes.createProfile);
                   },
                   textColor: AppColors.white,
                   borderColor: AppColors.purple,
@@ -153,36 +118,6 @@ class SignupScreen extends StatelessWidget {
                   textColor: AppColors.black,
                 ),
                 const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, Routes.signIn);
-                      },
-                      child: RichText(
-                        text: const TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'Already have an account? ',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: AppColors.black,
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'Sign in',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: AppColors.purple,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                )
               ],
             ),
           ),
