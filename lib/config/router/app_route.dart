@@ -27,7 +27,7 @@ class AppRouter {
         );
       case Routes.createProfile:
         return MaterialPageRoute(
-          builder: (_) => const CreateProileScreen(),
+          builder: (_) => CreateProileScreen(),
         );
       default:
         return MaterialPageRoute(

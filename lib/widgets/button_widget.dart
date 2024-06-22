@@ -7,13 +7,15 @@ class ButtonWidget extends StatelessWidget {
       required this.backgroundColor,
       required this.onPressed,
       required this.textColor,
-      required this.borderColor});
+      required this.borderColor,
+      required this.width});
 
   final String label;
   final Color backgroundColor;
   final VoidCallback onPressed;
   final Color textColor;
   final Color borderColor;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class ButtonWidget extends StatelessWidget {
         elevation: 0,
         foregroundColor: textColor,
         backgroundColor: backgroundColor,
-        minimumSize: const Size(double.infinity, 50),
+        minimumSize: Size(width, 50),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(48),
           side: BorderSide(color: borderColor, style: BorderStyle.solid),

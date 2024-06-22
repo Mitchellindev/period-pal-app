@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:period_pal/config/router/route.dart';
 import 'package:period_pal/core/contants/app_colors.dart';
 import 'package:period_pal/screens/average_cycle_lenght.dart';
 import 'package:period_pal/screens/create_profile_screen.dart';
@@ -6,6 +7,7 @@ import 'package:period_pal/screens/date_of_birth_screen.dart';
 import 'package:period_pal/screens/last_period_date_screen.dart';
 import 'package:period_pal/screens/setting_up_account_Screen.dart';
 import 'package:period_pal/screens/user_goal_screen.dart';
+import 'package:period_pal/widgets/badge_button_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProfileActivationScreen extends StatefulWidget {
@@ -23,7 +25,27 @@ class _ProfileActivationScreenState extends State<ProfileActivationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        actions: [
+          onLastPage
+              ? const SizedBox()
+              : BadgeButtonWidget(
+                  label: 'Skip',
+                  backgroundColor: AppColors.lightPurple,
+                  onPressed: () {
+                    onLastPage
+                        ? Navigator.pushNamed(context, Routes.signIn)
+                        : _controller.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeIn);
+                  },
+                  textColor: AppColors.white,
+                  borderColor: AppColors.lightPurple,
+                  width: 66.0,
+                ),
+        ],
+      ),
       body: SafeArea(
         child: Stack(
           children: [
@@ -36,19 +58,19 @@ class _ProfileActivationScreenState extends State<ProfileActivationScreen> {
               },
               controller: _controller,
               scrollDirection: Axis.horizontal,
-              children: const [
+              children: [
                 CreateProileScreen(),
-                DateOfBirthScreen(),
-                UserGoalScreen(),
-                LastPeriodDateScreen(),
-                AverageCycleLenghtScreen(),
-                SettingUpAccountScreen(),
+                const DateOfBirthScreen(),
+                const UserGoalScreen(),
+                const LastPeriodDateScreen(),
+                const AverageCycleLenghtScreen(),
+                const SettingUpAccountScreen(),
               ],
             ),
 
             //dot indicators
             Container(
-              alignment: const Alignment(0, 0.85),
+              alignment: const Alignment(0, 0.9),
               padding: const EdgeInsets.symmetric(horizontal: 22.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -60,24 +82,6 @@ class _ProfileActivationScreenState extends State<ProfileActivationScreen> {
                       activeDotColor: AppColors.purple,
                     ),
                   ),
-                  // onLastPage
-                  //     ? GestureDetector(
-                  //         onTap: () {
-                  //           // Navigator.pushNamed(context, Routes.welcomeScreen);
-                  //         },
-                  //         child: const Text(
-                  //           'Done',
-                  //           style: TextStyle(fontSize: 16),
-                  //         ),
-                  //       )
-                  //     : GestureDetector(
-                  //         onTap: () {
-                  //           _controller.nextPage(
-                  //               duration: const Duration(milliseconds: 500),
-                  //               curve: Curves.easeIn);
-                  //         },
-                  //         child: const Text('Next'),
-                  //       )
                 ],
               ),
             )

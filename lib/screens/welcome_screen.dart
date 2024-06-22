@@ -43,6 +43,7 @@ class WelcomeSceen extends StatelessWidget {
                 },
                 textColor: AppColors.white,
                 borderColor: AppColors.purple,
+                width: double.infinity,
               )
             ],
           ),

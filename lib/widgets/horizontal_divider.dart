@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:period_pal/core/contants/app_colors.dart';
 
-class HorizontalDivider extends StatelessWidget {
-  const HorizontalDivider({
+class HorizontalDividerWidget extends StatelessWidget {
+  const HorizontalDividerWidget({
     super.key,
     required this.width,
   });
@@ -12,7 +13,9 @@ class HorizontalDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      child: const Divider(),
+      child: const Divider(
+        color: AppColors.dividerColor,
+      ),
     );
   }
 }

@@ -83,12 +83,13 @@ class SignInScreen extends StatelessWidget {
                   },
                   textColor: AppColors.white,
                   borderColor: AppColors.purple,
+                  width: double.infinity,
                 ),
                 const SizedBox(height: 32),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    HorizontalDivider(width: 68),
+                    HorizontalDividerWidget(width: 68),
                     SizedBox(width: 12),
                     Text(
                       'Or Continue With',
@@ -98,7 +99,7 @@ class SignInScreen extends StatelessWidget {
                           fontWeight: FontWeight.w400),
                     ),
                     SizedBox(width: 12),
-                    HorizontalDivider(width: 68),
+                    HorizontalDividerWidget(width: 68),
                   ],
                 ),
                 const SizedBox(height: 32),
